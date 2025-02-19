@@ -1,1 +1,103 @@
-/* You can add global styles to this file, and also import other style files */
+@import '@angular/material/prebuilt-themes/cyan-orange.css';
+
+html,
+body {
+  height: 100%;
+  margin: 0;
+  font-family: Roboto, 'Helvetica Neue', sans-serif;
+  background-color: #1a1a1a;
+  color: #ffffff;
+}
+
+.container {
+  padding: 20px;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.mat-mdc-card {
+  margin-bottom: 20px;
+  background-color: #2d2d2d;
+  color: #ffffff;
+}
+
+.full-width {
+  width: 100%;
+}
+
+.flex-spacer {
+  flex: 1 1 auto;
+}
+
+h2 {
+  color: #ff4081;
+  margin-bottom: 1.5rem;
+}
+
+.mat-mdc-card-subtitle {
+  color: #b388ff !important;
+}
+
+/* Calendar customization */
+.fc {
+  background-color: #2d2d2d;
+  border-radius: 8px;
+  padding: 1rem;
+}
+
+.fc-theme-standard td,
+.fc-theme-standard th {
+  border-color: #404040;
+}
+
+.fc-theme-standard .fc-scrollgrid {
+  border-color: #404040;
+}
+
+.fc-day-today {
+  background-color: rgba(255, 64, 129, 0.1) !important;
+}
+
+.fc-daygrid-day-number {
+  color: #ffffff;
+}
+
+.fc-col-header-cell-cushion {
+  color: #ff4081;
+}
+
+/* Form customization */
+.mat-mdc-form-field {
+  width: 100%;
+}
+
+/* Button customization */
+.mat-mdc-raised-button.mat-primary {
+  background-color: #ff4081;
+}
+
+.mat-mdc-button:not(:disabled) {
+  color: #ff4081;
+}
+
+/* Custom theme overrides */
+.mat-mdc-card-header {
+  color: #ff4081;
+}
+
+.mat-toolbar.mat-primary {
+  background: #2d2d2d;
+  color: #ffffff;
+}
+
+.mat-mdc-paginator {
+  background: #2d2d2d;
+}
+
+.mat-calendar-body-selected {
+  background-color: #ff4081;
+}
+
+.mat-form-field-appearance-fill .mat-form-field-flex {
+  background-color: rgba(255, 255, 255, 0.05);
+}
