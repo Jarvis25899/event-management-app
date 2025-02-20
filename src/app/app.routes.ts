@@ -2,6 +2,7 @@ import { Routes } from '@angular/router';
 import { EventListComponent } from './components/event-list/event-list.component';
 import { EventDetailsComponent } from './components/event-details/event-details.component';
 import { EditEventComponent } from './components/edit-event/edit-event.component';
+import { CalendarViewComponent } from './components/calendar-view/calendar-view.component';
 
 export const routes: Routes = [
   {
@@ -27,6 +28,10 @@ export const routes: Routes = [
       {
         path: 'edit/:id',
         component: EditEventComponent,
+      },
+      {
+        path: 'calendar',
+        component: CalendarViewComponent,
       },
     ],
   },
