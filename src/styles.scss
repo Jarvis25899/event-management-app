@@ -1,10 +1,21 @@
-@import '@angular/material/prebuilt-themes/cyan-orange.css';
+@use "@angular/material" as mat;
+// @import '@angular/material/prebuilt-themes/azure-blue.css';
 
 html,
 body {
+  @include mat.theme(
+    (
+      color: (
+        theme-type: dark,
+        primary: mat.$azure-palette,
+        tertiary: mat.$blue-palette,
+      ),
+    )
+  );
+
   height: 100%;
   margin: 0;
-  font-family: Roboto, 'Helvetica Neue', sans-serif;
+  font-family: Roboto, "Helvetica Neue", sans-serif;
   background-color: #1a1a1a;
   color: #ffffff;
 }
@@ -30,7 +41,8 @@ body {
 }
 
 h2 {
-  color: #ff4081;
+  // color: #ff4081;
+  color: #abc7ff;
   margin-bottom: 1.5rem;
 }
 
@@ -63,7 +75,8 @@ h2 {
 }
 
 .fc-col-header-cell-cushion {
-  color: #ff4081;
+  // color: #ff4081;
+  color: #abc7ff;
 }
 
 /* Form customization */
@@ -73,16 +86,19 @@ h2 {
 
 /* Button customization */
 .mat-mdc-raised-button.mat-primary {
-  background-color: #ff4081;
+  // background-color: #ff4081;
+  background-color: #abc7ff;
 }
 
 .mat-mdc-button:not(:disabled) {
-  color: #ff4081;
+  // color: #ff4081;
+  color: #abc7ff;
 }
 
 /* Custom theme overrides */
 .mat-mdc-card-header {
-  color: #ff4081;
+  // color: #ff4081;
+  color: #abc7ff;
 }
 
 .mat-toolbar.mat-primary {
@@ -95,7 +111,8 @@ h2 {
 }
 
 .mat-calendar-body-selected {
-  background-color: #ff4081;
+  // background-color: #ff4081;
+  background-color: #abc7ff;
 }
 
 .mat-form-field-appearance-fill .mat-form-field-flex {
