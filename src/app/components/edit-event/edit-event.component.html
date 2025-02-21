@@ -1,18 +1,49 @@
 <div class="container">
   <h2>{{ isEdit ? 'Edit Event' : 'Create Event' }}</h2>
 
-  <form [formGroup]="eventForm" (submit)="submitForm()">
+  <form class="edit-event-form" [formGroup]="eventForm" (submit)="submitForm()">
     <mat-form-field>
       <mat-label>Title</mat-label>
       <input matInput formControlName="title" />
     </mat-form-field>
 
-    <mat-form-field>
-      <mat-label>Date</mat-label>
-      <input matInput [matDatepicker]="datePicker" formControlName="date" />
-      <mat-datepicker-toggle matSuffix [for]="datePicker"></mat-datepicker-toggle>
-      <mat-datepicker #datePicker></mat-datepicker>
-    </mat-form-field>
+    <div class="all-day-toggle">
+      All-day<mat-slide-toggle formControlName="allDay"></mat-slide-toggle>
+    </div>
+
+    <div class="date-time">
+      <mat-form-field>
+        <mat-label>Start Date</mat-label>
+        <input matInput [matDatepicker]="startDatePicker" formControlName="startDate" />
+        <mat-datepicker-toggle matSuffix [for]="startDatePicker"></mat-datepicker-toggle>
+        <mat-datepicker #startDatePicker></mat-datepicker>
+      </mat-form-field>
+
+      <mat-form-field *ngIf="!isAllDayEvent">
+        <mat-label>Start Time</mat-label>
+        <input matInput [matTimepicker]="starttimepicker" formControlName="startTime"
+          [max]="this.eventForm.value.endTime">
+        <mat-timepicker #starttimepicker [interval]="timeInterval+'m'" />
+        <mat-timepicker-toggle [for]="starttimepicker" matSuffix />
+      </mat-form-field>
+    </div>
+
+    <div class="date-time">
+      <mat-form-field>
+        <mat-label>End Date</mat-label>
+        <input matInput [matDatepicker]="endDatePicker" formControlName="endDate" />
+        <mat-datepicker-toggle matSuffix [for]="endDatePicker"></mat-datepicker-toggle>
+        <mat-datepicker #endDatePicker></mat-datepicker>
+      </mat-form-field>
+
+      <mat-form-field *ngIf="!isAllDayEvent">
+        <mat-label>End Time</mat-label>
+        <input matInput [matTimepicker]="endtimepicker" formControlName="endTime"
+          [min]="this.eventForm.value.startTime">
+        <mat-timepicker #endtimepicker interval="15m" />
+        <mat-timepicker-toggle [for]="endtimepicker" matSuffix />
+      </mat-form-field>
+    </div>
 
     <mat-form-field>
       <mat-label>Location</mat-label>

@@ -5,11 +5,18 @@ import { EventModel } from '../../models/event.model';
 import { MatButtonModule } from '@angular/material/button';
 import { MatCardModule } from '@angular/material/card';
 import { MatIconModule } from '@angular/material/icon';
+import { MatDividerModule } from '@angular/material/divider';
 import { CommonModule } from '@angular/common';
 
 @Component({
   selector: 'app-event-details',
-  imports: [MatButtonModule, MatCardModule, MatIconModule, CommonModule],
+  imports: [
+    MatButtonModule,
+    MatCardModule,
+    MatIconModule,
+    CommonModule,
+    MatDividerModule,
+  ],
   templateUrl: './event-details.component.html',
   styleUrl: './event-details.component.scss',
 })
@@ -27,6 +34,23 @@ export class EventDetailsComponent implements OnInit {
         this.event = this.eventsService.getEvent(+params['id']);
       }
     });
+  }
+
+  get isSingleDayEvent() {
+    if (this.event) {
+      const startDate = new Date(this.event.startDate);
+      startDate.setHours(0, 0, 0, 0);
+      const endDate = new Date(this.event.endDate);
+      endDate.setHours(0, 0, 0, 0);
+
+      return startDate.getTime() === endDate.getTime();
+    }
+
+    return false;
+  }
+
+  get multiDayDateFormat() {
+    return this.event?.allDay ? 'MMM d, y' : 'MMM d, y, h:mm a';
   }
 
   onEdit() {

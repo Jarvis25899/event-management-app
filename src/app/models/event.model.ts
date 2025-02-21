@@ -3,5 +3,9 @@ export interface EventModel {
   title: string;
   description: string;
   location: string;
-  date: Date;
+  startDate: Date;
+  endDate: Date;
+  startTime?: Date;
+  endTime?: Date;
+  allDay?: boolean;
 }

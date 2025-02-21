@@ -1,4 +1,18 @@
+mat-card {
+  border: 1px solid rgba(171, 199, 255, 0.3);
+}
+
 mat-card-actions {
   display: flex;
   gap: 12px;
+
+  .delete {
+    color: red;
+  }
+}
+
+.location {
+  display: flex;
+  align-items: center;
+  gap: 5px;
 }

@@ -1,5 +1,22 @@
-.form-actions {
-  margin-top: 20px;
+.edit-event-form {
   display: flex;
-  gap: 12px;
+  flex-direction: column;
+
+  .all-day-toggle {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-bottom: 16px;
+  }
+
+  .date-time {
+    display: flex;
+    gap: 12px;
+  }
+
+  .form-actions {
+    margin-top: 20px;
+    display: flex;
+    gap: 12px;
+  }
 }

@@ -5,25 +5,45 @@
     <mat-form-field appearance="fill" class="search-field">
       <mat-label>Search events</mat-label>
       <input matInput type="text" [(ngModel)]="searchTerm" (ngModelChange)="filterEvents()" />
-      <mat-icon matSuffix *ngIf="!searchTerm">search</mat-icon>
+      <mat-icon matSuffix *ngIf="!searchTerm" class="material-symbols-outlined">search</mat-icon>
       <button matSuffix mat-icon-button *ngIf="searchTerm" aria-label="Clear" (click)="clearSearch()">
-        <mat-icon>close</mat-icon>
+        <mat-icon class="material-symbols-outlined">close</mat-icon>
       </button>
     </mat-form-field>
   </div>
 
-  <div class="view-toggle"></div>
+  <div class="empty-container" *ngIf="!filteredEvents || filteredEvents.length === 0">
+    <span>{{searchTerm ? 'No events found.' : 'No events present.'}}</span>
+    <button *ngIf="!searchTerm" mat-button routerLink="/events/create" color="primary" class="create-button">
+      <mat-icon>add</mat-icon>
+      Create
+    </button>
+  </div>
 
-  <div class="events-list-container">
+  <div class="events-list-container" *ngIf="(filteredEvents?.length ?? 0) > 0">
     <mat-card *ngFor="let event of filteredEvents | slice: startIndex : endIndex" class="event-card">
       <mat-card-header>
         <mat-card-title>{{ event.title }}</mat-card-title>
-        <mat-card-subtitle>{{ event.date | date }}</mat-card-subtitle>
+        <mat-card-subtitle>
+          <div *ngIf="isSingleDayEvent(event)">
+            <div *ngIf="event.allDay">All day</div>
+            {{ event.startDate | date }}
+            <div *ngIf="!event.allDay">
+              <span>from {{event.startDate | date: 'h:mm a'}}</span>
+              <span> to {{event.endDate | date: 'h:mm a'}}</span>
+            </div>
+          </div>
+          <div *ngIf="!isSingleDayEvent(event)">
+            <div *ngIf="event.allDay">All day</div>
+            <span>from {{event.startDate | date: multiDayDateFormat(event)}}</span>
+            <span> to {{event.endDate | date: multiDayDateFormat(event)}}</span>
+          </div>
+        </mat-card-subtitle>
       </mat-card-header>
 
       <mat-card-content>
-        <p><strong>Location:</strong> {{ event.location }}</p>
-        <p class="description">{{ event.description }}</p>
+        <p class="location"><mat-icon class="material-symbols-outlined">location_on</mat-icon> {{ event.location }}
+        </p>
       </mat-card-content>
 
       <mat-card-actions>

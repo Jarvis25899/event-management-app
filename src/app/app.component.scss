@@ -1,8 +1,21 @@
+@import "../styles/variables.scss";
+
 .app-toolbar {
   position: sticky;
   top: 0;
   z-index: 1000;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+
+  .brand-container {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    cursor: pointer;
+  }
+
+  .event-logo {
+    color: $color-primary;
+  }
 
   .brand {
     font-size: 1.5rem;

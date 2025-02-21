@@ -1,4 +1,8 @@
 .container {
+  display: flex;
+  flex-direction: column;
+  height: calc(100% - 105px);
+
   .search-container {
     margin-bottom: 24px;
 
@@ -8,24 +12,41 @@
     }
   }
 
+  .empty-container {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    margin-bottom: 24px;
+
+    .create-button {
+      display: flex;
+      align-items: center;
+      gap: 4px;
+    }
+  }
+
   .events-list-container {
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
     gap: 24px;
     margin-bottom: 24px;
+    overflow: auto;
 
     .event-card {
       transition: transform 0.2s ease-in-out;
       height: 100%;
       display: flex;
       flex-direction: column;
-      // border: 1px solid rgba(255, 64, 129, 0.1);
       border: 1px solid rgba(171, 199, 255, 0.3);
 
       &:hover {
-        transform: translateY(-5px);
-        // border-color: rgba(255, 64, 129, 0.3);
         border-color: rgba(171, 199, 255, 0.5);
+      }
+
+      .location {
+        display: flex;
+        align-items: center;
+        gap: 5px;
       }
 
       .description {

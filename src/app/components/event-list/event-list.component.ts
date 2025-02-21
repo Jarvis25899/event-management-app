@@ -45,6 +45,23 @@ export class EventListComponent implements OnInit {
     });
   }
 
+  isSingleDayEvent(event: EventModel) {
+    if (event) {
+      const startDate = new Date(event.startDate);
+      startDate.setHours(0, 0, 0, 0);
+      const endDate = new Date(event.endDate);
+      endDate.setHours(0, 0, 0, 0);
+
+      return startDate.getTime() === endDate.getTime();
+    }
+
+    return false;
+  }
+
+  multiDayDateFormat(event: EventModel) {
+    return event.allDay ? 'MMM d, y' : 'MMM d, y, h:mm a';
+  }
+
   clearSearch() {
     this.searchTerm = '';
     this.filterEvents();
