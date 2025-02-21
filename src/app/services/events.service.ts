@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { EventModel } from '../models/event.model';
 import { BehaviorSubject } from 'rxjs';
 
+// Dummy data
 const DUMMY_EVENTS = [
   {
     id: 1,
@@ -31,6 +32,7 @@ export class EventsService {
   private eventSubject = new BehaviorSubject<EventModel[]>([]);
 
   constructor() {
+    // Comment these 2 lines if want to start data empty data
     this.events.push(...DUMMY_EVENTS);
     this.eventSubject.next(this.events);
   }
